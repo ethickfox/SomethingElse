@@ -1,16 +1,19 @@
-ï»¿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 void summator(int *a, int *b,int max,int t)
 {
     int i,counter=0,digit=0;
     int *c = (int*)calloc(sizeof(int),max+1);
-    for(i=0; i<=max; i++)
+    for(i=0; i<max; i++)
     {
-        counter = a[max-i] +b[max-i];
-        digit=counter/10;
-        counter=counter%10;
-        c[max-i+1]+=counter;
-        c[max-i]+=digit;
+        counter = a[max-i-1] +b[max-i-1];
+        if(counter>=10)
+        {
+            digit=counter/10;
+            counter=counter%10;
+        }
+        c[max-i]+=counter;
+        c[max-i-1]+=digit;
         digit=0;
         counter=0;
 
@@ -19,7 +22,7 @@ void summator(int *a, int *b,int max,int t)
         printf("-");
     printf("\n");
     printf("c: ");
-    for(i=t; i<max+1; i++)
+    for(i=0; i<max+1; i++)
         printf("%d",*(c+i));
     free(c);
 }
@@ -27,21 +30,19 @@ int main()
 {
     setlocale(0,"");
     int n,i,m,t=0,max,dif1=0,dif2=0;
-    printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ñ‡Ð¸ÑÐ»Ð° 1: ");
+    printf("Ââåäèòå ðàçìåð ÷èñëà 1: ");
     scanf("%d",&n);
-    printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ñ‡Ð¸ÑÐ»Ð° 2: ");
+    printf("Ââåäèòå ðàçìåð ÷èñëà 2: ");
     scanf("%d",&m);
     if(n>m)
     {
         max=n;
         dif1=max-m;
-        t=1;
     }
     else if(n<m)
     {
         max=m;
         dif2=max-n;
-        t=1;
     }
     else
     {
@@ -49,14 +50,14 @@ int main()
     }
     int *a =(int*)calloc(sizeof(int),max);
     int *b =(int*)calloc(sizeof(int),max);
-    printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ a: ");
-    for(i=dif2; i<n+dif2; i++)
+    printf("Ââåäèòå a: ");
+    for(i=dif2+1; i<=n+dif2; i++)
     {
         printf("\n");
         scanf("%d",a+i);
     }
-    printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ b: ");
-    for(i=dif1; i<m+dif1; i++)
+    printf("Ââåäèòå b: ");
+    for(i=dif1+1; i<=m+dif1; i++)
     {
         printf("\n");
         scanf("%d",b+i);
@@ -72,6 +73,5 @@ int main()
     summator(a,b,max,t);
     free(a);
     free(b);
-    system("pause");
     return 0;
 }
