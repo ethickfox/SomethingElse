@@ -1,4 +1,4 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <stdlib.h>
 void summator(int *a, int *b,int max,int t)
 {
@@ -30,9 +30,9 @@ int main()
 {
     setlocale(0,"");
     int n,i,m,t=0,max,dif1=0,dif2=0;
-    printf("Введите размер числа 1: ");
+    printf("Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ С‡РёСЃР»Р° 1: ");
     scanf("%d",&n);
-    printf("Введите размер числа 2: ");
+    printf("Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ С‡РёСЃР»Р° 2: ");
     scanf("%d",&m);
     if(n>m)
     {
@@ -50,13 +50,13 @@ int main()
     }
     int *a =(int*)calloc(sizeof(int),max);
     int *b =(int*)calloc(sizeof(int),max);
-    printf("Введите a: ");
+    printf("Р’РІРµРґРёС‚Рµ a: ");
     for(i=dif2+1; i<=n+dif2; i++)
     {
         printf("\n");
         scanf("%d",a+i);
     }
-    printf("Введите b: ");
+    printf("Р’РІРµРґРёС‚Рµ b: ");
     for(i=dif1+1; i<=m+dif1; i++)
     {
         printf("\n");
